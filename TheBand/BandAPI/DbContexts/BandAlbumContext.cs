@@ -24,7 +24,7 @@ namespace BandAPI.DbContexts
 			//Band Seeder
 			modelBuilder.Entity<Band>().HasData(
 			new Band(){
-				Id = Guid.Parse("2c64a452 - 0d46 - 4d10 - 9801 - 995ccb964c1b"),
+				Id = Guid.Parse("2c64a452-0d46-4d10-9801-995ccb964c1b"),
 				Name = "Metallica",
 				Founded = new DateTime(1980, 1, 1),
 				MainGenre="Heavy Metal"
@@ -64,7 +64,7 @@ namespace BandAPI.DbContexts
 					Id=Guid.Parse("beaacd3f-aaa4-4044-9c66-cec29ee3805c"),
 					Title="Master of Puppets",
 					Description="One of the best heavy metal albums ever",
-					BandId= Guid.Parse("2c64a452 - 0d46 - 4d10 - 9801 - 995ccb964c1b")
+					BandId= Guid.Parse("2c64a452-0d46-4d10-9801-995ccb964c1b")
 				},
 				new Album
 				{
