@@ -32,7 +32,12 @@ namespace BandAPI
 			{
 				setupAction.ReturnHttpNotAcceptable = true;
 			}).AddXmlDataContractSerializerFormatters();
+			//automapper
+			services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+			//repository register
 			services.AddScoped<IBandAlbumRepository,BandAlbumRepository>();
+
+			//dbcontext register
 			services.AddDbContext<BandAlbumContext>(options =>
 			{
 				options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
