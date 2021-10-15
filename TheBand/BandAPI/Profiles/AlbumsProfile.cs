@@ -13,6 +13,7 @@ namespace BandAPI.Profiles
 		public AlbumsProfile()
 		{
 			CreateMap<Album, AlbumsDto>().ReverseMap();
+			CreateMap<AlbumForCreatingDto, Album>();
 		}
 	}
 }
