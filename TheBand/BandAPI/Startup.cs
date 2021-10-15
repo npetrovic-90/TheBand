@@ -33,6 +33,8 @@ namespace BandAPI
 			{
 				setupAction.ReturnHttpNotAcceptable = true;
 			}).AddXmlDataContractSerializerFormatters();
+
+
 			//automapper
 			services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 			//repository register
