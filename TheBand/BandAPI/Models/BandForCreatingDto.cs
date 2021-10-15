@@ -5,15 +5,11 @@ using System.Threading.Tasks;
 
 namespace BandAPI.Models
 {
-	public class BandDto
+	public class BandForCreatingDto
 	{
 		
-		public Guid Id { get; set; }
 		public string Name { get; set; }
-		public string FoundedYearsAgo { get; set; }
+		public DateTime Founded { get; set; }
 		public string MainGenre { get; set; }
-
-
-	
 	}
 }
