@@ -95,7 +95,10 @@ namespace BandAPI.Controllers
 				return NotFound();
 
 			var albumToPatch = _mapper.Map<AlbumForUpdatingDto>(albumFromRepo);
-			patchDocument.ApplyTo(albumToPatch);
+			patchDocument.ApplyTo(albumToPatch, ModelState);
+
+			if (!TryValidateModel(albumToPatch))
+				return ValidationProblem(ModelState);
 
 			_mapper.Map(albumToPatch, albumFromRepo);
 			_bandAlbumRepository.UpdateAlbum(albumFromRepo);
