@@ -39,5 +39,12 @@ namespace BandAPI.Controllers
 
 			return Ok();
 		}
+
+		[HttpGet("({ids})")]
+		public IActionResult GetBandCollection([FromRoute] IEnumerable<Guid> ids)
+		{
+
+		}
+		
 	}
 }
