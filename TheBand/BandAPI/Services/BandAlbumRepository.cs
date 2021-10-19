@@ -1,6 +1,7 @@
 ﻿using BandAPI.DbContexts;
 using BandAPI.Entities;
 using BandAPI.Helpers;
+using BandAPI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,10 +12,13 @@ namespace BandAPI.Services
 	public class BandAlbumRepository : IBandAlbumRepository
 	{
 		private readonly BandAlbumContext _context;
+		private readonly IPropertyMappingService _propertyMappingService;
 
-		public BandAlbumRepository(BandAlbumContext context)
+		public BandAlbumRepository(BandAlbumContext context,IPropertyMappingService propertyMappingService)
 		{
 			_context = context ?? throw new ArgumentNullException(nameof(context));
+
+			_propertyMappingService = propertyMappingService;
 		}
 		public void AddAlbum(Guid bandId, Album album)
 		{
@@ -127,6 +131,15 @@ namespace BandAPI.Services
 				collection = collection.Where(b => b.Name.Contains(bandsResourceParameters.SearchQuery));
 			}
 
+			if (!string.IsNullOrWhiteSpace(bandsResourceParameters.OrderBy))
+			{
+				var bandPropertyMappingDictionary = _propertyMappingService.GetPropertyMapping<BandDto, Band>();
+
+				collection=collection.ApplySort(bandsResourceParameters.OrderBy, bandPropertyMappingDictionary);
+
+			}
+
+			
 
 			//pagination
 			return PagedList<Band>.Create(collection,bandsResourceParameters.PageNumber,bandsResourceParameters.PageSize);

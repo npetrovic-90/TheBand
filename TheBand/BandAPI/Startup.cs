@@ -46,7 +46,8 @@ namespace BandAPI
 			services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 			//repository register
 			services.AddScoped<IBandAlbumRepository,BandAlbumRepository>();
-
+			//custom mapping service
+			services.AddScoped<IPropertyMappingService, PropertyMappingService>();
 			//dbcontext register
 			services.AddDbContext<BandAlbumContext>(options =>
 			{
