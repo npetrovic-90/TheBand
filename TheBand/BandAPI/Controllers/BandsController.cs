@@ -108,6 +108,7 @@ namespace BandAPI.Controllers
 			{
 				case UriType.PreviousPage:
 					return Url.Link("GetBands", new { 
+						orderBy=bandsResourceParameters.OrderBy,
 						pageNumber=bandsResourceParameters.PageNumber-1, 
 						pageSize=bandsResourceParameters.PageSize,
 						mainGenre=bandsResourceParameters.MainGenre,
@@ -115,6 +116,7 @@ namespace BandAPI.Controllers
 				case UriType.NextPage:
 					return Url.Link("GetBands", new
 					{
+						orderBy = bandsResourceParameters.OrderBy,
 						pageNumber = bandsResourceParameters.PageNumber + 1,
 						pageSize = bandsResourceParameters.PageSize,
 						mainGenre = bandsResourceParameters.MainGenre,
@@ -123,6 +125,7 @@ namespace BandAPI.Controllers
 				default:
 					return Url.Link("GetBands", new
 					{
+						orderBy = bandsResourceParameters.OrderBy,
 						pageNumber = bandsResourceParameters.PageNumber,
 						pageSize = bandsResourceParameters.PageSize,
 						mainGenre = bandsResourceParameters.MainGenre,
