@@ -50,6 +50,8 @@ namespace BandAPI
 			services.AddScoped<IPropertyMappingService, PropertyMappingService>();
 			//validation service for data shaping
 			services.AddScoped<IPropertyValidationService, PropertyValidationService>();
+			//
+			services.AddResponseCaching();
 			//dbcontext register
 			services.AddDbContext<BandAlbumContext>(options =>
 			{
@@ -75,6 +77,8 @@ namespace BandAPI
 					});
 				});
 			}
+
+			app.UseResponseCaching();
 
 			app.UseRouting();
 
