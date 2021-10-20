@@ -33,6 +33,7 @@ namespace BandAPI
 			services.AddControllers( setupAction => 
 			{
 				setupAction.ReturnHttpNotAcceptable = true;
+				setupAction.CacheProfiles.Add("90SecondsCacheProfile", new CacheProfile { Duration = 90 });
 			})
 				
 				//adding newtonsoft json support
@@ -50,7 +51,7 @@ namespace BandAPI
 			services.AddScoped<IPropertyMappingService, PropertyMappingService>();
 			//validation service for data shaping
 			services.AddScoped<IPropertyValidationService, PropertyValidationService>();
-			//
+			//adding caching service
 			services.AddResponseCaching();
 			//dbcontext register
 			services.AddDbContext<BandAlbumContext>(options =>
@@ -78,6 +79,7 @@ namespace BandAPI
 				});
 			}
 
+			//caching middleware
 			app.UseResponseCaching();
 
 			app.UseRouting();
