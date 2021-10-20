@@ -61,7 +61,7 @@ namespace BandAPI.Controllers
 			return Ok(_mapper.Map<IEnumerable<BandDto>>(bandsFromRepo).ShapeData(bandsResourceParameters.Fields));
 		}
 		[HttpGet("{bandId}",Name="GetBand")]
-		public IActionResult GetBand(Guid bandId)
+		public IActionResult GetBand(Guid bandId,string fields)
 		{
 			
 
@@ -70,7 +70,7 @@ namespace BandAPI.Controllers
 			if (bandFromRepo == null)
 				return NotFound();
 
-			return  Ok(bandFromRepo);
+			return  Ok(_mapper.Map<BandDto>(bandFromRepo).ShapeData(fields));
 		}
 
 		[HttpPost]
