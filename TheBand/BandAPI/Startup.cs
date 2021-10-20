@@ -48,6 +48,8 @@ namespace BandAPI
 			services.AddScoped<IBandAlbumRepository,BandAlbumRepository>();
 			//custom mapping service
 			services.AddScoped<IPropertyMappingService, PropertyMappingService>();
+			//validation service for data shaping
+			services.AddScoped<IPropertyValidationService, PropertyValidationService>();
 			//dbcontext register
 			services.AddDbContext<BandAlbumContext>(options =>
 			{
