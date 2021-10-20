@@ -22,5 +22,8 @@ namespace BandAPI.Helpers
 		//sorting prop
 		public string OrderBy { get; set; } = "Name";
 
+		//prop for fields
+		public string Fields { get; set; }
+
 	}
 }

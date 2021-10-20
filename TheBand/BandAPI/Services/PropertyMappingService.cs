@@ -37,7 +37,9 @@ namespace BandAPI.Services
 
 		}
 
-		public bool ValidMappingExists<TSource,TDestination>(string fields)
+		
+
+		public bool ValidMappingExist<TSource,TDestination>(string fields)
 		{
 			var propertyMapping = GetPropertyMapping<TSource, TDestination>();
 
